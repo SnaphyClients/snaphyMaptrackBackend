@@ -1,0 +1,54 @@
+{
+  "name": "mapstrack",
+  "version": "1.0.0",
+  "main": "backend",
+  "description": "A plugin for adding mapstrack feature",
+  "author": "Robins Gupta",
+  "authorEmail": "robinskumar73@gmail.com",
+  "routeExposure": "/mapstrack",
+  "staticFiles": {
+    "css": {
+      "exampleCss": "/mapstrack/style/example.css"
+    },
+    "js": {
+      "mapstrackRoute": "/mapstrack/scripts/routes/mapstrack.js",
+      "mapstrackController": "/mapstrack/scripts/controllers/mapstrack.js"
+    },
+    "moduleDependencies": {},
+    "settings": "/mapstrack/settings.js"
+  },
+  "bodystructure": {
+    "asidebarHook": [],
+    "sidebarHook": [],
+    "headerHook": [],
+    "footerHook": []
+  },
+  "trackUrlPath": "track",
+  "appUrl": "http://mapstrack.com/",
+  "alarmManager": {
+    "dailyHour": 0,
+    "dailyMinutes": 0
+  },
+  "SECRET_CODE": "mapstrack-secret-code-snaphy",
+  "databases": {
+    "Track": "Track",
+    "EventType": "EventType",
+    "Customer": "Customer"
+  },
+  "eventPushFromMessage": "Mapstrack",
+  "pluginDepedencies": {},
+  "activate": true,
+  "services": {},
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "moment": "^2.12.0",
+    "node-schedule": "^1.0.0",
+    "speakeasy": "^2.0.0"
+  },
+  "optionalDependencies": {},
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "devDependencies": {}
+}

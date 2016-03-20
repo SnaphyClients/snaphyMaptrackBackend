@@ -1,0 +1,69 @@
+{
+  "name": "EmployeeDetails",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "address": {
+      "type": "string",
+      "required": "true",
+      "template": {
+        "type": "textarea",
+        "templateOptions": {
+          "type": "text",
+          "label": "Enter Address",
+          "id": "address"
+        }
+      }
+    },
+    "contactNumber": {
+      "type": "number",
+      "required": true,
+      "template": {
+        "type": "input",
+        "templateOptions": {
+          "type": "text",
+          "label": "Enter Contact Number",
+          "id": "number"
+        }
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "employees": {
+      "type": "hasOne",
+      "model": "Employee",
+      "foreignKey": "",
+      "templateOptions": {
+        "searchProp": "email",
+        "create": false,
+        "search": true,
+        "btnText": "Add Employee "
+      }
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$staff",
+      "permission": "ALLOW",
+      "property": "save"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "save"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "staff",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

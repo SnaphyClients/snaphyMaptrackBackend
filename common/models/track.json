@@ -1,0 +1,500 @@
+{
+  "name": "Track",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "filters": {
+    "type": {
+      "type": "$radio",
+      "label": "Show only Location or Event",
+      "options": [
+        {
+          "id": 1,
+          "name": "location"
+        },
+        {
+          "id": 2,
+          "name": "event"
+        }
+      ]
+    },
+    "added": {
+      "type": "$date",
+      "label": "Events/Location added between"
+    },
+    "status": {
+      "type": "$select",
+      "label": "Show event/location status",
+      "options": [
+        {
+          "id": 1,
+          "name": "allow"
+        },
+        {
+          "id": 2,
+          "name": "onhold"
+        },
+        {
+          "id": 3,
+          "name": "expired"
+        }
+      ]
+    },
+    "isPublic": {
+      "type": "$radio",
+      "label": "Show only public or private event.",
+      "options": [
+        {
+          "id": 1,
+          "name": "public"
+        },
+        {
+          "id": 2,
+          "name": "private"
+        }
+      ]
+    }
+  },
+  "widgets": [
+    {
+      "label": "Total Events Added",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$allTime",
+        "where": {
+          "type": "event"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Total Locations Added",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$allTime",
+        "where": {
+          "type": "location"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Locations Added Today",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$today",
+        "where": {
+          "type": "location"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Locations Added This week",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$week",
+        "where": {
+          "type": "location"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Events Added Today",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$today",
+        "where": {
+          "type": "event"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Events Added This Week",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$week",
+        "where": {
+          "type": "event"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Total Public Events Created",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$allTime",
+        "where": {
+          "type": "event",
+          "isPublic": "public"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Total Private Events Created",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$allTime",
+        "where": {
+          "type": "event",
+          "isPublic": "private"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Total Public Locations Created",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$allTime",
+        "where": {
+          "type": "location",
+          "isPublic": "public"
+        },
+        "dateProp": "added"
+      }
+    },
+    {
+      "label": "Total Private Locations Created",
+      "icon": "si-bar-chart",
+      "fetchLocally": true,
+      "propObj": {
+        "type": "$allTime",
+        "where": {
+          "type": "location",
+          "isPublic": "private"
+        },
+        "dateProp": "added"
+      }
+    }
+  ],
+  "tables": {
+    "description": {
+      "display": false
+    },
+    "status": {
+      "search": "select",
+      "options": [
+        "allow",
+        "onhold",
+        "expired"
+      ],
+      "tag": {
+        "hold": "label-warning",
+        "allow": "label-primary",
+        "expired": "label-danger"
+      }
+    },
+    "eventType_name": {
+      "display": true,
+      "search": "related",
+      "relatedModel": "EventType",
+      "foreignKey": "eventTypeId",
+      "propertyName": "name"
+    },
+    "customer_phoneNumber": {
+      "display": true,
+      "search": "related",
+      "relatedModel": "Customer",
+      "foreignKey": "customerId",
+      "propertyName": "phoneNumber"
+    },
+    "customer_firstName": {
+      "display": false
+    },
+    "customer_lastName": {
+      "display": false
+    },
+    "customer_profilePic": {
+      "display": false
+    },
+    "customer_password": {
+      "display": false
+    },
+    "customer_date": {
+      "display": false
+    },
+    "customer_email": {
+      "display": false
+    },
+    "customer_status": {
+      "display": false
+    },
+    "customer_lastUpdatedLocation": {
+      "display": false
+    },
+    "customer_lastModified": {
+      "display": false
+    },
+    "added": {
+      "date": true,
+      "search": "date"
+    },
+    "eventDate": {
+      "date": true,
+      "search": "date"
+    },
+    "address": {
+      "search": "text"
+    },
+    "friends": {
+      "display": false
+    },
+    "name": {
+      "search": "text"
+    },
+    "locationId": {
+      "search": "text"
+    },
+    "geolocation": {
+      "display": false
+    },
+    "picture": {
+      "display": false
+    },
+    "type": {
+      "search": "select",
+      "options": [
+        "event",
+        "location"
+      ],
+      "tag": {
+        "event": "label-primary",
+        "location": "label-warning"
+      }
+    },
+    "isPublic": {
+      "search": "select",
+      "options": [
+        "public",
+        "private"
+      ],
+      "tag": {
+        "public": "label-primary",
+        "private": "label-danger"
+      }
+    }
+  },
+  "properties": {
+    "picture": {
+      "type": "object",
+      "template": {
+        "type": "singleFileUpload",
+        "templateOptions": {
+          "label": "Add event picture",
+          "containerName": "gruberr-recipes",
+          "containerModel": "Container",
+          "bind": true
+        }
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": false,
+      "template": {
+        "type": "input",
+        "templateOptions": {
+          "type": "text",
+          "label": "Enter event name",
+          "id": "EventName"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "template": {
+        "type": "input",
+        "templateOptions": {
+          "type": "text",
+          "label": "Enter event details",
+          "id": "EventDesc"
+        }
+      }
+    },
+    "uniqueCode": {
+      "type": "number"
+    },
+    "isPublic": {
+      "type": "string",
+      "default": true,
+      "template": {
+        "type": "selectString",
+        "templateOptions": {
+          "label": "Is your event/location is a public event.",
+          "id": "isPublicEvent",
+          "options": [
+            "public",
+            "private"
+          ]
+        }
+      }
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "template": {
+        "type": "input",
+        "templateOptions": {
+          "type": "text",
+          "label": "Enter event/location address",
+          "id": "EventAddress"
+        }
+      }
+    },
+    "geolocation": {
+      "type": "geopoint",
+      "required": true,
+      "template": {
+        "type": "objectValue",
+        "templateOptions": {
+          "fields": [
+            {
+              "type": "input",
+              "key": "lat",
+              "templateOptions": {
+                "type": "text",
+                "label": "Enter event/location latitude",
+                "id": "latitude"
+              }
+            },
+            {
+              "type": "input",
+              "key": "lng",
+              "templateOptions": {
+                "type": "text",
+                "label": "Enter event/location longitude",
+                "id": "longitude"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "friends": {
+      "type": [
+        "object"
+      ],
+      "required": false,
+      "template": {
+        "type": "arrayValue",
+        "templateOptions": {
+          "btnText": "Add friends",
+          "name": "Friend",
+          "fields": [
+            {
+              "type": "input",
+              "key": "number",
+              "templateOptions": {
+                "type": "text",
+                "label": "Enter friends contact number"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "type": {
+      "type": "string",
+      "required": false,
+      "default": "location",
+      "template": {
+        "type": "selectString",
+        "templateOptions": {
+          "label": "Select location/event type",
+          "id": "isEvent",
+          "options": [
+            "location",
+            "event"
+          ]
+        }
+      }
+    },
+    "locationId": {
+      "type": "string",
+      "template": {
+        "type": "input",
+        "templateOptions": {
+          "type": "text",
+          "label": "Enter location unique id",
+          "id": "LocationUniqueId"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "required": false,
+      "default": "allow",
+      "template": {
+        "type": "selectString",
+        "templateOptions": {
+          "label": "Add a current status to allow/restrict a customer.",
+          "id": "chefStatus",
+          "options": [
+            "allow",
+            "onhold",
+            "expired"
+          ]
+        }
+      }
+    },
+    "lastModified": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "added": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "eventDate": {
+      "type": "date",
+      "template": {
+        "type": "date",
+        "templateOptions": {
+          "label": "Add event date.",
+          "placeholder":"Enter event date"
+        }
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "customer": {
+      "type": "belongsTo",
+      "model": "Customer",
+      "foreignKey": "",
+      "templateOptions": {
+        "btnText": "Add Owner",
+        "searchProp": "phoneNumber",
+        "create": false
+      }
+    },
+    "eventType": {
+      "type": "belongsTo",
+      "model": "EventType",
+      "foreignKey": "",
+      "templateOptions": {
+        "btnText": "Add Event Type",
+        "searchProp": "name",
+        "create": false,
+        "search": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

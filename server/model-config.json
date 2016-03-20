@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "mongodb"
+  },
+  "AccessToken": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "adminEmail": {
+    "dataSource": "GoogleEmail",
+    "public": true
+  },
+  "AmazonImage": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "CompanyInfo": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "container": {
+    "dataSource": "Image",
+    "public": true
+  },
+  "Employee": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Customer": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "FacebookAccessToken": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "EmployeeDetails": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Track": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "LastUpdatedLocation": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "EventType": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+   "application": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "installation": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "notification": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "push": {
+    "dataSource": "push",
+    "public": true
+  }
+}

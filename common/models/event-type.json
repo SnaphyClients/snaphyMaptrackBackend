@@ -1,0 +1,38 @@
+{
+  "name": "EventType",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "tables": {
+    "name": {
+      "tag": {},
+      "search": "text"
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "template": {
+        "type": "input",
+        "templateOptions": {
+          "type": "text",
+          "label": "Enter event type",
+          "id": "EventType"
+        }
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tracks": {
+      "type": "hasMany",
+      "model": "Track",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
