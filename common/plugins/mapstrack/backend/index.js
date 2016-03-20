@@ -710,7 +710,51 @@ module.exports = function(server, databaseObj, helper, packageObj) {
     var addTrackingCodeRoute = function() {
         server.get("/" + trackPath + '/:trackingCode', function(req, res) {
             var code = req.params.trackingCode;
-            res.render(__dirname + '/track/track', {});
+            //Found all those allowed events which gonna happen tomorrow. and send an push message to those users..
+            var Track = databaseObj.Track;
+            var where = {
+                "uniqueCode": code
+            };
+            var data = {};
+
+            Track.find({
+                    where: where
+                })
+                .then(function(values) {
+
+                    if (values) {
+                        if (values.length) {
+                            var event = values[0];
+
+                            if(event.geolocation){
+                                data.lat = event.geolocation.lat;
+                                data.lng = event.geolocation.lng;
+                            }else{
+                                data.lat = 0;
+                                data.lng = 0;
+                            }
+                            console.log("I am here", data);
+                            res.render(__dirname + '/track/track', data);
+                        }else{
+                            data.lat = 0;
+                            data.lng = 0;
+                            res.render(__dirname + '/track/track', data);
+                        }
+                    }else{
+                        data.lat = 0;
+                        data.lng = 0;
+                        res.render(__dirname + '/track/track', data);
+                    }
+
+                })
+                .catch(function(err) {
+                    //Log error occured..
+                    console.error(err);
+                    data.lat = 0;
+                    data.lng = 0;
+                    res.render(__dirname + '/track/track', data);
+                });
+
         });
     };
 

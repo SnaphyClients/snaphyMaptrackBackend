@@ -30,7 +30,18 @@ DESIGNED & DEVELOPED by SNAPHY.COM
 
     var markerA = null;
     var markerB = null;
-    var pointB = new google.maps.LatLng(28.76688, 78.115551);
+    var lat = <%= lat %>;
+    var lng = <%= lng %>;
+    var pointB;
+
+    if(lat && lng){
+        pointB = new google.maps.LatLng(lat, lng);
+    }else{
+        if(lat === 0 && lng === 0){
+            alert("Sorry! Destination not found!");
+        }
+    }
+
     var id, options;
 
     options = {
@@ -50,7 +61,7 @@ DESIGNED & DEVELOPED by SNAPHY.COM
         }
 
         var myOptions = {
-            zoom: 15,
+            zoom: 21,
             center: currentLocation,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -73,7 +84,7 @@ DESIGNED & DEVELOPED by SNAPHY.COM
         }
 
 
-        if (markerB === null) {
+        if (markerB === null && pointB) {
             markerB = new google.maps.Marker({
                 position: pointB,
                 label: "B",
@@ -81,9 +92,11 @@ DESIGNED & DEVELOPED by SNAPHY.COM
             });
         }
 
+        if(pointB){
+            // get route from A to B
+            calculateAndDisplayRoute(directionsService, directionsDisplay, currentLocation, pointB);
+        }
 
-        // get route from A to B
-        calculateAndDisplayRoute(directionsService, directionsDisplay, currentLocation, pointB);
 
     }
 
