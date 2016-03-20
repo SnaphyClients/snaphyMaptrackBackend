@@ -530,7 +530,7 @@ module.exports = function(server, databaseObj, helper, packageObj) {
     var checkExpiryRecurrenceRule = function() {
         var rule = new schedule.RecurrenceRule();
         rule.hour = packageObj.alarmManager.dailyHour;
-        rule.minute = packageObj.alarmManager.dailyMinutes || 0; 
+        rule.minute = packageObj.alarmManager.dailyMinutes || 1;
     
 
         //Run job every this hour..
@@ -601,10 +601,9 @@ module.exports = function(server, databaseObj, helper, packageObj) {
     //Will run at every 12
     var addRecurrenceRule = function() {
         var rule = new schedule.RecurrenceRule();
-        rule.hour = packageObj.alarmManager.dailyHour;
-        if (packageObj.alarmManager.dailyMinutes) {
-            rule.minute = packageObj.alarmManager.dailyMinutes;
-        }
+        rule.hour = packageObj.alarmManager.dailyHour || 0;
+        rule.minute = packageObj.alarmManager.dailyMinutes || 1;
+
 
         //Run job every this hour..
         var job = schedule.scheduleJob(rule, function() {

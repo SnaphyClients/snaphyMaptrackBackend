@@ -27,7 +27,7 @@
   "appUrl": "http://mapstrack.com/",
   "alarmManager": {
     "dailyHour": 0,
-    "dailyMinutes": 0
+    "dailyMinutes": 1
   },
   "SECRET_CODE": "mapstrack-secret-code-snaphy",
   "databases": {
