@@ -733,7 +733,6 @@ module.exports = function(server, databaseObj, helper, packageObj) {
                                 data.lat = 0;
                                 data.lng = 0;
                             }
-                            console.log("I am here", data);
                             res.render(__dirname + '/track/track', data);
                         }else{
                             data.lat = 0;
