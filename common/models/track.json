@@ -472,6 +472,60 @@
     }
   },
   "validations": [],
+  "validationsBackend": {
+    "rules": {
+      "customer": {
+        "required": true,
+        "valueNotEquals": ""
+      },
+      "status": {
+        "required": true,
+        "valueNotEquals": ""
+      },
+      "type": {
+        "required": true,
+        "valueNotEquals": ""
+      },
+      "isPublic": {
+        "required": true,
+        "valueNotEquals": ""
+      },
+      "eventType": {
+        "required": true,
+        "valueNotEquals": ""
+      }
+    },
+    "messages": {
+      "customer": {
+        "required": "Please add customer for this event",
+        "valueNotEquals": "Please add customer for this event"
+      },
+      "eventType": {
+        "required": "Please add event type for this event",
+        "valueNotEquals": "Please add event type for this event"
+      },
+      "status": {
+        "required": "Please add status for this event",
+        "valueNotEquals": "Please add status for this event"
+      },
+      "type": {
+        "required": "Please add event type",
+        "valueNotEquals": "Please add event type"
+      },
+      "isPublic": {
+        "required": "Please add event type",
+        "valueNotEquals": "Please add event type"
+      }
+    }
+  },
+  "complexValidation": {
+    "rules": {
+
+    },
+    "messages": {
+
+    }
+  },
   "relations": {
     "customer": {
       "type": "belongsTo",
@@ -480,7 +534,8 @@
       "templateOptions": {
         "btnText": "Add Owner",
         "searchProp": "phoneNumber",
-        "create": false
+        "create": false,
+        "id": "customerId"
       }
     },
     "eventType": {
@@ -490,6 +545,7 @@
       "templateOptions": {
         "btnText": "Add Event Type",
         "searchProp": "name",
+        "id":"eventType",
         "create": false,
         "search": true
       }
