@@ -710,7 +710,7 @@ module.exports = function(server, databaseObj, helper, packageObj) {
     var addTrackingCodeRoute = function() {
         server.get("/" + trackPath + '/:trackingCode', function(req, res) {
             var code = req.params.trackingCode;
-            res.send('Your tracking code is ' + code);
+            res.render(__dirname + '/track/track', {});
         });
     };
 

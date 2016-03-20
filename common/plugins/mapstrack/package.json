@@ -8,7 +8,7 @@
   "routeExposure": "/mapstrack",
   "staticFiles": {
     "css": {
-      "exampleCss": "/mapstrack/style/example.css"
+      "exampleCss": "/mapstrack/style/tracking.css"
     },
     "js": {
       "mapstrackRoute": "/mapstrack/scripts/routes/mapstrack.js",
