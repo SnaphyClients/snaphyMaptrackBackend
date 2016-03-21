@@ -284,7 +284,9 @@ module.exports = function(server, databaseObj, helper, packageObj) {
                         var newFriendsAdded = _.filter(contactObjList, function(contactObj) {
                             var previousContactValue = previousValue.friends;
                             for (var i = 0; i < previousContactValue.length; i++) {
-                                if (previousContactValue[i].number === contactObj.number) {
+                                var previousNumber = formatNumber(previousContactValue[i].number.toString());
+                                var addedNumber = formatNumber(contactObj.number.toString());
+                                if (previousNumber === addedNumber) {
                                     return false;
                                 }
                             } //for loop..
@@ -303,6 +305,28 @@ module.exports = function(server, databaseObj, helper, packageObj) {
                 } //else not error..
             });
         }
+    };
+
+
+
+
+    var formatNumber = function(number){
+        var patt = /^\+?[0-9]{10,12}$/;
+        if(!patt.test(number)){
+            //Remove zero..
+            if(number[0].toString() === "0"){
+               //remove zero..
+                number = number.substring(1);
+            }
+
+            //Now add +91
+            var indianStyle = /^\+91\d+/;
+            if(!indianStyle.test(number)){
+                number = "+91" + number;
+            }
+        }
+
+        return number;
     };
 
 
@@ -587,7 +611,7 @@ module.exports = function(server, databaseObj, helper, packageObj) {
     var validatePhoneNumber = function(number) {
         var patt = /^\+?[0-9]{10,12}$/;
         if (patt.test(number)) {
-            return true
+            return true;
         } else {
             //Number not valid..
             return false;
@@ -679,7 +703,7 @@ module.exports = function(server, databaseObj, helper, packageObj) {
 
         if (data.friends) {
             if (data.friends.length) {
-                if (data.isPublic === "public") {
+                if (data.isPublic === "public" && data.type === "location") {
                     //clear the list..
                     data.friends = [];
                 }
