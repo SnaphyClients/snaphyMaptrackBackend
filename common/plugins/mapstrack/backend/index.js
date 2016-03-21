@@ -284,10 +284,12 @@ module.exports = function(server, databaseObj, helper, packageObj) {
                         var newFriendsAdded = _.filter(contactObjList, function(contactObj) {
                             var previousContactValue = previousValue.friends;
                             for (var i = 0; i < previousContactValue.length; i++) {
-                                var previousNumber = formatNumber(previousContactValue[i].number.toString());
-                                var addedNumber = formatNumber(contactObj.number.toString());
-                                if (previousNumber === addedNumber) {
-                                    return false;
+                                if(previousContactValue[i].number){
+                                    var previousNumber = formatNumber(previousContactValue[i].number);
+                                    var addedNumber = formatNumber(contactObj.number);
+                                    if (previousNumber === addedNumber) {
+                                        return false;
+                                    }
                                 }
                             } //for loop..
 
@@ -311,20 +313,24 @@ module.exports = function(server, databaseObj, helper, packageObj) {
 
 
     var formatNumber = function(number){
-        var patt = /^\+?[0-9]{10,12}$/;
-        if(!patt.test(number)){
-            //Remove zero..
-            if(number[0].toString() === "0"){
-               //remove zero..
-                number = number.substring(1);
-            }
+        number = number.toString();
+        if(number){
+            var patt = /^\+?[0-9]{12,12}$/;
+            if(!patt.test(number)){
+                //Remove zero..
+                if(number.substring(0,1) === "0"){
+                    //remove zero..
+                    number = number.substring(1);
+                }
 
-            //Now add +91
-            var indianStyle = /^\+91\d+/;
-            if(!indianStyle.test(number)){
-                number = "+91" + number;
+                //Now add +91
+                var indianStyle = /^\+91\d+/;
+                if(!indianStyle.test(number)){
+                    number = "+91" + number;
+                }
             }
         }
+
 
         return number;
     };
@@ -707,6 +713,14 @@ module.exports = function(server, databaseObj, helper, packageObj) {
                     //clear the list..
                     data.friends = [];
                 }
+
+                //Now format number..
+                data.friends.forEach(function(numberObj, index){
+                    if(numberObj.number){
+                        data.friends[index].number = formatNumber(numberObj.number);
+                    }
+
+                });
             }
         }
     };
