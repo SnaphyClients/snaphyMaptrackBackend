@@ -115,10 +115,10 @@ module.exports = function(server, databaseObj, helper, packageObj) {
 
                     if (instance.friends) {
                         if (instance.friends.length) {
-                            if (instance.isPublic === "private") {
+                            //if (instance.isPublic === "private") {
                                 //Send friends invites..
                                 filterFriendList(instance.friends, instance, ctx.isNewInstance);
-                            }
+                            //}
                         }
                     }
 
