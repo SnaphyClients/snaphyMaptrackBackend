@@ -433,8 +433,8 @@ module.exports = function(server, databaseObj, helper, packageObj) {
             message = message + " " + capitalizeEachWord(owner.lastName);
         }
 
-        message = message + " has shared an event '" + capitalizeEachWord(instance.name) + "' with you! Tracking code: " + instance.uniqueCode + " \nUrl: " +
-            packageObj.appUrl + trackPath + "/" + instance.uniqueCode + "\nSend by Mapstrack.";
+        message = message + " has shared an event '" + capitalizeEachWord(instance.name) + "' with you through Mapstrack! Use Tracking code: " + instance.uniqueCode + " to track this event.\nTracking Link: " +
+            packageObj.appUrl + trackPath + "/" + instance.uniqueCode + "";
         return message;
     };
 
