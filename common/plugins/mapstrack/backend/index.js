@@ -99,10 +99,10 @@ module.exports = function(server, databaseObj, helper, packageObj) {
 
                     if (instance.friends) {
                         if (instance.friends.length) {
-                            if (instance.isPublic === "private") {
+                            //if (instance.isPublic === "private") {
                                 //Send friends invites..
                                 filterFriendList(instance.friends, instance, ctx.isNewInstance);
-                            }
+                            //}
                         }
                     }
                 }, next);
@@ -275,7 +275,7 @@ module.exports = function(server, databaseObj, helper, packageObj) {
             //First find the new added data..
             var Track = databaseObj.Track;
             //Search 
-            Track.findById(instance.id, {}, function(err, previousValue) {
+             Track.findById(instance.id, {}, function(err, previousValue) {
                 if (err) {
                     console.error(err);
                 } else {
@@ -433,7 +433,7 @@ module.exports = function(server, databaseObj, helper, packageObj) {
             message = message + " " + capitalizeEachWord(owner.lastName);
         }
 
-        message = message + " has shared an event `" + capitalizeEachWord(instance.name) + "` with you.\nTracking code: " + instance.uniqueCode + " \nUrl: " +
+        message = message + " has shared an event '" + capitalizeEachWord(instance.name) + "' with you! Tracking code: " + instance.uniqueCode + " \nUrl: " +
             packageObj.appUrl + trackPath + "/" + instance.uniqueCode + "\nSend by Mapstrack.";
         return message;
     };
