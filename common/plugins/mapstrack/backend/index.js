@@ -38,7 +38,8 @@ module.exports = function(server, databaseObj, helper, packageObj) {
         addTrackingCodeRoute();
         requestOtp();
         //Google login with code..
-        loginWithCode(); 
+        loginWithCode();
+        searchCustomer();
     };
 
 
@@ -192,6 +193,40 @@ module.exports = function(server, databaseObj, helper, packageObj) {
                         'Depending on the value of `include` parameter, the body may contain ' +
                         'additional properties:\n\n' +
                         '  - `user` - `{User}` - Data of the currently logged in user. (`include=user`)\n\n'
+                },
+                http: {
+                    verb: 'post'
+                }
+            }
+        ); //remoteMethod
+    };
+
+
+    var searchCustomer = function() {
+        var Customer = databaseObj.Customer;
+        Customer.search = function(filter, callback) {
+            Customer.find(filter)
+                .then(function(customerList){
+                    callback(null, customerList);
+                })
+                .catch(function(err){
+                    callback(err);
+                });
+        };
+
+        Customer.remoteMethod(
+            'search', {
+                accepts: [{
+                    arg: 'filter',
+                    type: 'object',
+                    required: true
+                }],
+                description: "Customer find by post method",
+                returns: {
+                    arg: 'data',
+                    type: ['Customer'],
+                    root: true,
+                    description: 'List of logged in customers'
                 },
                 http: {
                     verb: 'post'
@@ -893,4 +928,4 @@ module.exports = function(server, databaseObj, helper, packageObj) {
     return {
         init: init
     }
-} //module.exports
+}; //module.exports
