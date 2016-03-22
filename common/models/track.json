@@ -331,7 +331,7 @@
     },
     "isPublic": {
       "type": "string",
-      "default": true,
+      "default": "public",
       "template": {
         "type": "selectString",
         "templateOptions": {
