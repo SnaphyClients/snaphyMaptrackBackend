@@ -417,7 +417,7 @@ module.exports = function(server, databaseObj, helper, packageObj) {
 
     var sendPush = function(registrationId, message) {
         var from = packageObj.eventPushFromMessage || "Mapstrack";
-        push(server, message, registrationId, from, function(err) {
+        push.push(server, message, registrationId, from, function(err) {
             if (err) {
                 //log error..
                 console.error(err);
@@ -433,7 +433,14 @@ module.exports = function(server, databaseObj, helper, packageObj) {
             message = message + " " + capitalizeEachWord(owner.lastName);
         }
 
-        message = message + " has shared an event '" + capitalizeEachWord(instance.name) + "' with you through Mapstrack! Use Tracking code: " + instance.uniqueCode + " to track this event.\nTracking Link: " +
+        var type;
+        if(instance.type === "event"){
+            type = "an event";
+        }else{
+            type = "a location"
+        }
+
+        message = message + " has shared " + type + " '" + capitalizeEachWord(instance.name) + "' with you through Mapstrack! Use Tracking code: " + instance.uniqueCode + " to track this event.\nTracking Link: " +
             packageObj.appUrl + trackPath + "/" + instance.uniqueCode + "";
         return message;
     };
