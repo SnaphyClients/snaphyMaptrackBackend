@@ -96,6 +96,20 @@ module.exports = function(server, databaseObj, helper, packageObj) {
         });
 
 
+        //Also format customer mobile number..
+        Customer.observe("before save", function(ctx, next){
+            //validate data..
+            var instance = ctx.instance || ctx.data;
+            //First validate the data..
+            if(instance.phoneNumber){
+                instance.phoneNumber =  formatNumber(instance.phoneNumber);
+            }
+            //Call the next middleware...
+            next();
+        });
+
+
+
         LastUpdatedLocation.observe("before save", function(ctx, next){
             //validate data..
             var instance = ctx.instance || ctx.data;
