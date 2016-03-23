@@ -174,6 +174,16 @@ public class LastUpdatedLocationRepository extends ModelRepository<LastUpdatedLo
         
             
         
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
         return contract;
     }
 
@@ -790,6 +800,16 @@ public class LastUpdatedLocationRepository extends ModelRepository<LastUpdatedLo
 
             
 
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
         
     
         

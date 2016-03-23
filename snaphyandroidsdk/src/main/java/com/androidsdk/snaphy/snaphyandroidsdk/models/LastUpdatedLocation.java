@@ -61,68 +61,44 @@ public class LastUpdatedLocation extends Model {
         
             
             
+                private String added;
+                /* Adding Getter and Setter methods */
+                public String getAdded(){
+                    return added;
+                }
+
+                /* Adding Getter and Setter methods */
+                public void setAdded(String added){
+                    this.added = added;
+                    //Update hashMap value..
+                    hashMap.put("added", added);
+                }
+
             
             
             
-                private Map<String, Object> lastUpdatedLocation = new HashMap();
-                /* Adding Getter and Setter methods */
-                public Map<String, Object> getLastUpdatedLocation(){
-                    return lastUpdatedLocation;
-                }
-                /* Adding Getter and Setter methods */
-                public double getLastUpdatedLocationLatitide(){
-                    if(lastUpdatedLocation != null){
-                        return (Double)lastUpdatedLocation.get("lat");
-                    }else{
-                        return 0;
-                    }
-                }
-
-                /* Adding Getter and Setter methods */
-                public double getLastUpdatedLocationLongitude(){
-                    if(lastUpdatedLocation != null){
-                        return (Double)lastUpdatedLocation.get("lng");
-                    }else{
-                        return 0;
-                    }
-
-                }
-
-                /* Adding Getter and Setter methods */
-                public void setLastUpdatedLocation(Map<String, Object> lastUpdatedLocation){
-                    this.lastUpdatedLocation.putAll(lastUpdatedLocation);
-                    //Update Map value..
-                    hashMap.put("lastUpdatedLocation", lastUpdatedLocation);
-                }
-
-                /* Adding Getter and Setter methods */
-                public void setLastUpdatedLocation(double lat, double lng){
-                    this.lastUpdatedLocation.put("lat", lat);
-                    this.lastUpdatedLocation.put("lng", lng);
-                    //Update Map value..
-                    hashMap.put("lastUpdatedLocation", lastUpdatedLocation);
-                }
-
             
 
         
     
         
             
+
+                private List<Map<String, Object>> sharedLocation;
+                /* Adding Getter and Setter methods */
+                public List<Map<String, Object>> getSharedLocation(){
+                    return sharedLocation;
+                }
+
+                /* Adding Getter and Setter methods */
+                public void setSharedLocation(List<Map<String, Object>> sharedLocation){
+                    this.sharedLocation = sharedLocation;
+
+                    //TODO change this to custom array with double quotes escaped if error occured when sending to server..
+                    hashMap.put("sharedLocation", sharedLocation);
+                }
+
             
-                private String lastModified;
-                /* Adding Getter and Setter methods */
-                public String getLastModified(){
-                    return lastModified;
-                }
-
-                /* Adding Getter and Setter methods */
-                public void setLastModified(String lastModified){
-                    this.lastModified = lastModified;
-                    //Update hashMap value..
-                    hashMap.put("lastModified", lastModified);
-                }
-
             
             
             
@@ -253,6 +229,11 @@ public class LastUpdatedLocation extends Model {
                                     } //method def ends here.
                                  
                             
+                        
+                        
+                        
+                        
+                        
                         
                         
                         

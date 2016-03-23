@@ -40,7 +40,7 @@ import com.androidsdk.snaphy.snaphyandroidsdk.repository.CustomerRepository;
     
 
     
-            import com.androidsdk.snaphy.snaphyandroidsdk.repository.CustomerRepository;
+            import com.androidsdk.snaphy.snaphyandroidsdk.repository.LastUpdatedLocationRepository;
             
 
         
@@ -501,18 +501,6 @@ public class Customer extends com.strongloop.android.loopback.User {
                             
                          
                             
-                         
-                            
-                         
-                            
-                         
-                            
-                         
-                            
-                         
-                            
-                         
-                            
                         
 
                                     //Write the method here..
@@ -749,19 +737,6 @@ public class Customer extends com.strongloop.android.loopback.User {
                         
                         
                         
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                     
 
                 
@@ -874,18 +849,6 @@ public class Customer extends com.strongloop.android.loopback.User {
                     
 
                      
-                            
-                         
-                            
-                         
-                            
-                         
-                            
-                         
-                            
-                         
-                            
-                         
                             
                          
                             
@@ -1253,19 +1216,6 @@ public class Customer extends com.strongloop.android.loopback.User {
                         
                         
                         
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                     
 
                 
@@ -1280,90 +1230,42 @@ public class Customer extends com.strongloop.android.loopback.User {
     
         
                 
-                
-                
-                    //TODO ADD BACKWARD COMPATIBILITY FOR hasManyThrough relationship..warning backward compatibility may leads to cyclic error..
                     //Define belongsTo relation method here..
-                    private List<Customer>  location_shared ;
+                    private LastUpdatedLocation  lastUpdatedLocations ;
 
-                    public List<Customer> getLocation_shared() {
-                        return location_shared;
+                    public LastUpdatedLocation getLastUpdatedLocations() {
+                        return lastUpdatedLocations;
                     }
 
-
-                    public void setLocation_shared(List<Customer> location_shared) {
-                        boolean hashType = false;
-                        List<HashMap<String, Object>> hashMaps = new ArrayList<>();
-                        for(Object o: location_shared){
-                            if(o.getClass().equals(HashMap.class)){
-                                hashType = true;
-                                HashMap<String, Object> dataObj = (HashMap<String, Object>)o;
-                                hashMaps.add(dataObj);
-                            }else if(o.getClass().equals(HashMap.class)){
-                                hashType = true;
-                                HashMap<String, Object> dataObj = (HashMap<String, Object>)o;
-                                hashMaps.add(dataObj);
-                            }
-                        }
-
-                        if(hashType){
-                            setLocation_shared1(hashMaps);
-                        }else{
-                            this.location_shared = location_shared;
-                        }
+                    public void setLastUpdatedLocations(LastUpdatedLocation lastUpdatedLocations) {
+                        this.lastUpdatedLocations = lastUpdatedLocations;
                     }
-
-                    /*
 
                     //Adding related model automatically in case of include statement from server..
-                    public void setLocation_shared1(List<Map<String, Object>> location_shared) {
-                        //First create a dummy Repo class object for ..
-                        CustomerRepository location_sharedRepository = new CustomerRepository();
-                        List<Customer> result = new ArrayList<>();
-                        for (Map<String, Object> obj : location_shared) {
-                            //Also add relation to child type for two way communication..
-                            Customer obj1 = location_sharedRepository.createObject(obj);
-                            result.add(obj1);
-                        }
-                        setLocation_shared(result);
+                    public void setLastUpdatedLocations(Map<String, Object> lastUpdatedLocations) {
+                        //First create a dummy Repo class object for customer.
+                        LastUpdatedLocationRepository lastUpdatedLocationsRepository = new LastUpdatedLocationRepository();
+                        LastUpdatedLocation lastUpdatedLocations1 = lastUpdatedLocationsRepository.createObject(lastUpdatedLocations);
+                        setLastUpdatedLocations(lastUpdatedLocations1);
                     }
-
-                    */
 
                     //Adding related model automatically in case of include statement from server..
-                    public void setLocation_shared1(List<HashMap<String, Object>> location_shared) {
-                        //First create a dummy Repo class object for ..
-                        CustomerRepository location_sharedRepository = new CustomerRepository();
-                        List<Customer> result = new ArrayList<>();
-                        for (HashMap<String, Object> obj : location_shared) {
-                            //Also add relation to child type for two way communication..
-                            Customer obj1 = location_sharedRepository.createObject(obj);
-                            result.add(obj1);
-                        }
-                        setLocation_shared(result);
+                    public void setLastUpdatedLocations(HashMap<String, Object> lastUpdatedLocations) {
+                        //First create a dummy Repo class object for customer.
+                        LastUpdatedLocationRepository lastUpdatedLocationsRepository = new LastUpdatedLocationRepository();
+                        LastUpdatedLocation lastUpdatedLocations1 = lastUpdatedLocationsRepository.createObject(lastUpdatedLocations);
+                        setLastUpdatedLocations(lastUpdatedLocations1);
                     }
-
 
                     //Adding relation method..
-                    public void addRelation(List<Customer> location_shared, Customer dummyClassInstance) {
-                        that.setLocation_shared(location_shared);
+                    public void addRelation(LastUpdatedLocation lastUpdatedLocations) {
+                        that.setLastUpdatedLocations(lastUpdatedLocations);
                     }
 
 
-                    //Adding relation method..
-                    //This will add a new data to the list relation object..
-                    public void addRelation(Customer location_shared) {
-                        try{
-                            that.getLocation_shared().add(location_shared);
-                        }catch(Exception e){
-                            List< Customer> location_shared1 = new ArrayList();
-                            //Now add this item to list..
-                            location_shared1.add(location_shared);
-                            //Now set data....
-                            that.setLocation_shared(location_shared1);
-                        }
-                    }
 
+                
+                
                 
 
 
@@ -1381,10 +1283,24 @@ public class Customer extends com.strongloop.android.loopback.User {
                             
                          
                             
+                         
+                            
+                         
+                            
+                         
+                            
+                         
+                            
+                         
+                            
+                         
+                            
+                         
+                            
                         
 
                                     //Write the method here..
-                                    public void findById__location_shared( String fk,  RestAdapter restAdapter, final ObjectCallback<Customer> callback) {
+                                    public void get__lastUpdatedLocations( Boolean refresh,  RestAdapter restAdapter, final ObjectCallback<LastUpdatedLocation> callback) {
                                         //Define methods here..
                                         final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
                                         
@@ -1395,13 +1311,13 @@ public class Customer extends com.strongloop.android.loopback.User {
 
 
 
-                                        customerRepo.findById__location_shared( (String)that.getId(), fk,  new ObjectCallback<Customer> (){
+                                        customerRepo.get__lastUpdatedLocations( (String)that.getId(), refresh,  new ObjectCallback<LastUpdatedLocation> (){
                                             
 
                                             
                                                 @Override
                                                 
-                                                    public void onSuccess(Customer object) {
+                                                    public void onSuccess(LastUpdatedLocation object) {
                                                         if(object != null){
                                                             //now add relation to this recipe.
                                                             addRelation(object);
@@ -1432,7 +1348,7 @@ public class Customer extends com.strongloop.android.loopback.User {
                         
 
                                     //Write the method here..
-                                    public void destroyById__location_shared( String fk,  RestAdapter restAdapter, final VoidCallback callback) {
+                                    public void create__lastUpdatedLocations( LastUpdatedLocation data,  RestAdapter restAdapter, final ObjectCallback<LastUpdatedLocation> callback) {
                                         //Define methods here..
                                         final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
                                         
@@ -1443,7 +1359,100 @@ public class Customer extends com.strongloop.android.loopback.User {
 
 
 
-                                        customerRepo.destroyById__location_shared( (String)that.getId(), fk,  new VoidCallback (){
+                                        customerRepo.create__lastUpdatedLocations( (String)that.getId(), data.convertMap(),  new ObjectCallback<LastUpdatedLocation> (){
+                                            
+
+                                            
+                                                @Override
+                                                
+                                                    public void onSuccess(LastUpdatedLocation object) {
+                                                        if(object != null){
+                                                            //now add relation to this recipe.
+                                                            addRelation(object);
+                                                            //Also add relation to child type for two way communication..Removing two way communication for cyclic error
+                                                            //object.addRelation(that);
+                                                            callback.onSuccess(object);
+                                                        }else{
+                                                            callback.onSuccess(null);
+                                                        }
+
+                                                    }
+                                                
+                                            
+
+
+                                            
+
+                                            @Override
+                                            public void onError(Throwable t) {
+                                                //Now calling the callback
+                                                callback.onError(t);
+                                            }
+
+                                        });
+                                    } //method def ends here.
+                                 
+                            
+                        
+
+                                    //Write the method here..
+                                    public void update__lastUpdatedLocations( LastUpdatedLocation data,  RestAdapter restAdapter, final ObjectCallback<LastUpdatedLocation> callback) {
+                                        //Define methods here..
+                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
+                                        
+                                        
+                                        
+                                        
+                                        
+
+
+
+                                        customerRepo.update__lastUpdatedLocations( (String)that.getId(), data.convertMap(),  new ObjectCallback<LastUpdatedLocation> (){
+                                            
+
+                                            
+                                                @Override
+                                                
+                                                    public void onSuccess(LastUpdatedLocation object) {
+                                                        if(object != null){
+                                                            //now add relation to this recipe.
+                                                            addRelation(object);
+                                                            //Also add relation to child type for two way communication..Removing two way communication for cyclic error
+                                                            //object.addRelation(that);
+                                                            callback.onSuccess(object);
+                                                        }else{
+                                                            callback.onSuccess(null);
+                                                        }
+
+                                                    }
+                                                
+                                            
+
+
+                                            
+
+                                            @Override
+                                            public void onError(Throwable t) {
+                                                //Now calling the callback
+                                                callback.onError(t);
+                                            }
+
+                                        });
+                                    } //method def ends here.
+                                 
+                            
+                        
+
+                                    //Write the method here..
+                                    public void destroy__lastUpdatedLocations( RestAdapter restAdapter, final VoidCallback callback) {
+                                        //Define methods here..
+                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
+                                        
+                                        
+
+
+
+                                        customerRepo.destroy__lastUpdatedLocations( (String)that.getId(),  new VoidCallback (){
                                             
                                                 @Override
                                                 public void onSuccess() {
@@ -1466,184 +1475,6 @@ public class Customer extends com.strongloop.android.loopback.User {
                                     } //method def ends here.
                                  
                             
-                        
-
-                                    //Write the method here..
-                                    public void updateById__location_shared( String fk,  Customer data,  RestAdapter restAdapter, final ObjectCallback<Customer> callback) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-
-
-
-                                        customerRepo.updateById__location_shared( (String)that.getId(), fk, data.convertMap(),  new ObjectCallback<Customer> (){
-                                            
-
-                                            
-                                                @Override
-                                                
-                                                    public void onSuccess(Customer object) {
-                                                        if(object != null){
-                                                            //now add relation to this recipe.
-                                                            addRelation(object);
-                                                            //Also add relation to child type for two way communication..Removing two way communication for cyclic error
-                                                            //object.addRelation(that);
-                                                            callback.onSuccess(object);
-                                                        }else{
-                                                            callback.onSuccess(null);
-                                                        }
-
-                                                    }
-                                                
-                                            
-
-
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
-                        
-
-                                    //Write the method here..
-                                    public void link__location_shared( String fk,  RestAdapter restAdapter, final ObjectCallback<Customer> callback) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-
-
-
-                                        customerRepo.link__location_shared( (String)that.getId(), fk,  new ObjectCallback<Customer> (){
-                                            
-
-                                            
-                                                @Override
-                                                
-                                                    public void onSuccess(Customer object) {
-                                                        if(object != null){
-                                                            //now add relation to this recipe.
-                                                            addRelation(object);
-                                                            //Also add relation to child type for two way communication..Removing two way communication for cyclic error
-                                                            //object.addRelation(that);
-                                                            callback.onSuccess(object);
-                                                        }else{
-                                                            callback.onSuccess(null);
-                                                        }
-
-                                                    }
-                                                
-                                            
-
-
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
-                        
-
-                                    //Write the method here..
-                                    public void unlink__location_shared( String fk,  RestAdapter restAdapter, final VoidCallback callback) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-                                        
-                                        
-                                        
-
-
-
-                                        customerRepo.unlink__location_shared( (String)that.getId(), fk,  new VoidCallback (){
-                                            
-                                                @Override
-                                                public void onSuccess() {
-                                                    callback.onSuccess();
-                                                }
-                                            
-
-                                            
-
-
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
-                        
-
-                                    //Write the method here..
-                                    public void exists__location_shared( String fk,  RestAdapter restAdapter, final Adapter.JsonObjectCallback  callback ) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-                                        
-                                        
-                                        
-
-
-
-                                        customerRepo.exists__location_shared( (String)that.getId(), fk,  new Adapter.JsonObjectCallback(){
-                                            
-
-                                            
-                                                @Override
-                                                
-                                                    public void onSuccess(JSONObject object) {
-                                                        callback.onSuccess(object);
-                                                    }
-                                                
-                                            
-
-
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
                          
                             
                          
@@ -1660,207 +1491,6 @@ public class Customer extends com.strongloop.android.loopback.User {
                             
                          
                             
-                         
-                            
-                         
-                            
-                         
-                            
-                        
-
-                                    //Write the method here..
-                                    public void get__location_shared( Map<String,  ? extends Object> filter,  RestAdapter restAdapter, final ListCallback<Customer> callback) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-                                        
-                                        
-                                        
-
-
-
-                                        customerRepo.get__location_shared( (String)that.getId(), filter,  new ListCallback<Customer> (){
-                                            
-
-                                            
-
-
-                                            
-                                                @Override
-                                                
-                                                    public void onSuccess(List<Customer> object) {
-                                                        if(object != null){
-                                                            //now add relation to this recipe.
-                                                            Customer obj = new Customer();
-                                                            addRelation(object, obj);
-                                                            //Disabling two way communication for cyclic error..
-                                                            /*for (Customer obj : object) {
-                                                                //Also add relation to child type for two way communication..
-                                                                obj.addRelation(that);
-                                                            }*/
-
-                                                            callback.onSuccess(object);
-                                                        }else{
-                                                            callback.onSuccess(null);
-                                                        }
-
-                                                    }
-                                                
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
-                        
-
-                                    //Write the method here..
-                                    public void create__location_shared( Customer data,  RestAdapter restAdapter, final ObjectCallback<Customer> callback) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-                                        
-                                        
-                                        
-
-
-
-                                        customerRepo.create__location_shared( (String)that.getId(), data.convertMap(),  new ObjectCallback<Customer> (){
-                                            
-
-                                            
-                                                @Override
-                                                
-                                                    public void onSuccess(Customer object) {
-                                                        if(object != null){
-                                                            //now add relation to this recipe.
-                                                            addRelation(object);
-                                                            //Also add relation to child type for two way communication..Removing two way communication for cyclic error
-                                                            //object.addRelation(that);
-                                                            callback.onSuccess(object);
-                                                        }else{
-                                                            callback.onSuccess(null);
-                                                        }
-
-                                                    }
-                                                
-                                            
-
-
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
-                        
-
-                                    //Write the method here..
-                                    public void delete__location_shared( RestAdapter restAdapter, final VoidCallback callback) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-
-
-
-                                        customerRepo.delete__location_shared( (String)that.getId(),  new VoidCallback (){
-                                            
-                                                @Override
-                                                public void onSuccess() {
-                                                    callback.onSuccess();
-                                                }
-                                            
-
-                                            
-
-
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
-                        
-
-                                    //Write the method here..
-                                    public void count__location_shared( Map<String,  ? extends Object> where,  RestAdapter restAdapter, final Adapter.JsonObjectCallback  callback ) {
-                                        //Define methods here..
-                                        final CustomerRepository  customerRepo = restAdapter.createRepository(CustomerRepository.class);
-                                        
-                                        
-                                        
-                                        
-                                        
-
-
-
-                                        customerRepo.count__location_shared( (String)that.getId(), where,  new Adapter.JsonObjectCallback(){
-                                            
-
-                                            
-                                                @Override
-                                                
-                                                    public void onSuccess(JSONObject object) {
-                                                        callback.onSuccess(object);
-                                                    }
-                                                
-                                            
-
-
-                                            
-
-                                            @Override
-                                            public void onError(Throwable t) {
-                                                //Now calling the callback
-                                                callback.onError(t);
-                                            }
-
-                                        });
-                                    } //method def ends here.
-                                 
-                            
-                         
-                            
-                         
-                            
-                         
-                            
-                         
-                            
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         
                         
                         
@@ -1894,9 +1524,6 @@ public class Customer extends com.strongloop.android.loopback.User {
                 
 
                  
-                
-                    //Define hasAndBelongsToMany..
-
                  
              
           

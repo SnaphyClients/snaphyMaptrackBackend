@@ -50,8 +50,8 @@ import com.androidsdk.snaphy.snaphyandroidsdk.models.Customer;
     
 
     
-            import com.androidsdk.snaphy.snaphyandroidsdk.models.Customer;
-            import com.androidsdk.snaphy.snaphyandroidsdk.repository.CustomerRepository;
+            import com.androidsdk.snaphy.snaphyandroidsdk.models.LastUpdatedLocation;
+            import com.androidsdk.snaphy.snaphyandroidsdk.repository.LastUpdatedLocationRepository;
             
         
     
@@ -119,54 +119,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
             
 
                 
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/:fk", "GET"), "Customer.prototype.__findById__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/:fk", "DELETE"), "Customer.prototype.__destroyById__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/:fk", "PUT"), "Customer.prototype.__updateById__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/rel/:fk", "PUT"), "Customer.prototype.__link__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/rel/:fk", "DELETE"), "Customer.prototype.__unlink__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/rel/:fk", "HEAD"), "Customer.prototype.__exists__location_shared");
-                
-
-            
-        
-            
-
-                
                     contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/facebookAccessToken", "GET"), "Customer.prototype.__get__facebookAccessToken");
                 
 
@@ -223,6 +175,38 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
             
 
                 
+                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/lastUpdatedLocations", "GET"), "Customer.prototype.__get__lastUpdatedLocations");
+                
+
+            
+        
+            
+
+                
+                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/lastUpdatedLocations", "POST"), "Customer.prototype.__create__lastUpdatedLocations");
+                
+
+            
+        
+            
+
+                
+                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/lastUpdatedLocations", "PUT"), "Customer.prototype.__update__lastUpdatedLocations");
+                
+
+            
+        
+            
+
+                
+                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/lastUpdatedLocations", "DELETE"), "Customer.prototype.__destroy__lastUpdatedLocations");
+                
+
+            
+        
+            
+
+                
                     contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/accessTokens", "GET"), "Customer.prototype.__get__accessTokens");
                 
 
@@ -248,38 +232,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
 
                 
                     contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/accessTokens/count", "GET"), "Customer.prototype.__count__accessTokens");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared", "GET"), "Customer.prototype.__get__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared", "POST"), "Customer.prototype.__create__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared", "DELETE"), "Customer.prototype.__delete__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/count", "GET"), "Customer.prototype.__count__location_shared");
                 
 
             
@@ -447,22 +399,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
             
 
                 
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/__connect__location_shared", "POST"), "Customer.__connect__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/__disconnect__location_shared", "POST"), "Customer.__disconnect__location_shared");
-                
-
-            
-        
-            
-
-                
                     contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/requestOtp", "POST"), "Customer.requestOtp");
                 
 
@@ -496,94 +432,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
 
                 
                     contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/loginWithFb", "POST"), "Customer.loginWithFb");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/:fk", "GET"), "Customer.prototype.__findById__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/:fk", "DELETE"), "Customer.prototype.__destroyById__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/:fk", "PUT"), "Customer.prototype.__updateById__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/rel/:fk", "PUT"), "Customer.prototype.__link__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/rel/:fk", "DELETE"), "Customer.prototype.__unlink__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/rel/:fk", "HEAD"), "Customer.prototype.__exists__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared", "GET"), "Customer.prototype.__get__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared", "POST"), "Customer.prototype.__create__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared", "POST"), "Customer.prototype.__create__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared", "DELETE"), "Customer.prototype.__delete__location_shared");
-                
-
-            
-        
-            
-
-                
-                    contract.addItem(new RestContractItem("/" + getNameForRestUrl() + "/:customerId/location_shared/count", "GET"), "Customer.prototype.__count__location_shared");
                 
 
             
@@ -751,280 +599,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
                 
 
             }//Method updateById__accessTokens definition ends here..
-
-            
-
-        
-    
-        
-            //Method findById__location_shared definition
-            public void findById__location_shared(  String customerId,  String fk, final ObjectCallback<Customer> callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("fk", fk);
-                
-
-                
-
-
-                
-                    
-                    
-                    invokeStaticMethod("prototype.__findById__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                if(response != null){
-                                    CustomerRepository customerRepo = getRestAdapter().createRepository(CustomerRepository.class);
-                                    Map<String, Object> result = JsonUtil.fromJson(response);
-                                    Customer customer = customerRepo.createObject(result);
-                                    callback.onSuccess(customer);
-
-                                }else{
-                                    callback.onSuccess(null);
-                                }
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method findById__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method destroyById__location_shared definition
-            public void destroyById__location_shared(  String customerId,  String fk, final VoidCallback callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("fk", fk);
-                
-
-                
-                    invokeStaticMethod("prototype.__destroyById__location_shared", hashMapObject, new Adapter.Callback() {
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(String response) {
-                            callback.onSuccess();
-                        }
-                    });
-                
-
-
-                
-
-                
-
-            }//Method destroyById__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method updateById__location_shared definition
-            public void updateById__location_shared(  String customerId,  String fk,  Map<String,  ? extends Object> data, final ObjectCallback<Customer> callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("fk", fk);
-                
-                        hashMapObject.putAll(data);
-                
-
-                
-
-
-                
-                    
-                    
-                    invokeStaticMethod("prototype.__updateById__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                if(response != null){
-                                    CustomerRepository customerRepo = getRestAdapter().createRepository(CustomerRepository.class);
-                                    Map<String, Object> result = JsonUtil.fromJson(response);
-                                    Customer customer = customerRepo.createObject(result);
-                                    callback.onSuccess(customer);
-
-                                }else{
-                                    callback.onSuccess(null);
-                                }
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method updateById__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method link__location_shared definition
-            public void link__location_shared(  String customerId,  String fk, final ObjectCallback<Customer> callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("fk", fk);
-                
-
-                
-
-
-                
-                    
-                    
-                    invokeStaticMethod("prototype.__link__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                if(response != null){
-                                    CustomerRepository customerRepo = getRestAdapter().createRepository(CustomerRepository.class);
-                                    Map<String, Object> result = JsonUtil.fromJson(response);
-                                    Customer customer = customerRepo.createObject(result);
-                                    callback.onSuccess(customer);
-
-                                }else{
-                                    callback.onSuccess(null);
-                                }
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method link__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method unlink__location_shared definition
-            public void unlink__location_shared(  String customerId,  String fk, final VoidCallback callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("fk", fk);
-                
-
-                
-                    invokeStaticMethod("prototype.__unlink__location_shared", hashMapObject, new Adapter.Callback() {
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(String response) {
-                            callback.onSuccess();
-                        }
-                    });
-                
-
-
-                
-
-                
-
-            }//Method unlink__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method exists__location_shared definition
-            public void exists__location_shared(  String customerId,  String fk, final Adapter.JsonObjectCallback  callback ){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("fk", fk);
-                
-
-                
-
-
-                
-                    
-                    invokeStaticMethod("prototype.__exists__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                callback.onSuccess(response);
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method exists__location_shared definition ends here..
 
             
 
@@ -1362,6 +936,195 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
         
     
         
+            //Method get__lastUpdatedLocations definition
+            public void get__lastUpdatedLocations(  String customerId,  Boolean refresh, final ObjectCallback<LastUpdatedLocation> callback){
+
+                //Definging hashMap for data conversion
+                Map<String, Object> hashMapObject = new HashMap<>();
+                //Now add the arguments...
+                
+                        hashMapObject.put("customerId", customerId);
+                
+                        hashMapObject.put("refresh", refresh);
+                
+
+                
+
+
+                
+                    
+                    
+                    invokeStaticMethod("prototype.__get__lastUpdatedLocations", hashMapObject, new Adapter.JsonObjectCallback() {
+                    
+                        @Override
+                        public void onError(Throwable t) {
+                            callback.onError(t);
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject response) {
+                            
+                                if(response != null){
+                                    LastUpdatedLocationRepository lastUpdatedLocationRepo = getRestAdapter().createRepository(LastUpdatedLocationRepository.class);
+                                    Map<String, Object> result = JsonUtil.fromJson(response);
+                                    LastUpdatedLocation lastUpdatedLocation = lastUpdatedLocationRepo.createObject(result);
+                                    callback.onSuccess(lastUpdatedLocation);
+
+                                }else{
+                                    callback.onSuccess(null);
+                                }
+                            
+                        }
+                    });
+                
+
+                
+
+            }//Method get__lastUpdatedLocations definition ends here..
+
+            
+
+        
+    
+        
+            //Method create__lastUpdatedLocations definition
+            public void create__lastUpdatedLocations(  String customerId,  Map<String,  ? extends Object> data, final ObjectCallback<LastUpdatedLocation> callback){
+
+                //Definging hashMap for data conversion
+                Map<String, Object> hashMapObject = new HashMap<>();
+                //Now add the arguments...
+                
+                        hashMapObject.put("customerId", customerId);
+                
+                        hashMapObject.putAll(data);
+                
+
+                
+
+
+                
+                    
+                    
+                    invokeStaticMethod("prototype.__create__lastUpdatedLocations", hashMapObject, new Adapter.JsonObjectCallback() {
+                    
+                        @Override
+                        public void onError(Throwable t) {
+                            callback.onError(t);
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject response) {
+                            
+                                if(response != null){
+                                    LastUpdatedLocationRepository lastUpdatedLocationRepo = getRestAdapter().createRepository(LastUpdatedLocationRepository.class);
+                                    Map<String, Object> result = JsonUtil.fromJson(response);
+                                    LastUpdatedLocation lastUpdatedLocation = lastUpdatedLocationRepo.createObject(result);
+                                    callback.onSuccess(lastUpdatedLocation);
+
+                                }else{
+                                    callback.onSuccess(null);
+                                }
+                            
+                        }
+                    });
+                
+
+                
+
+            }//Method create__lastUpdatedLocations definition ends here..
+
+            
+
+        
+    
+        
+            //Method update__lastUpdatedLocations definition
+            public void update__lastUpdatedLocations(  String customerId,  Map<String,  ? extends Object> data, final ObjectCallback<LastUpdatedLocation> callback){
+
+                //Definging hashMap for data conversion
+                Map<String, Object> hashMapObject = new HashMap<>();
+                //Now add the arguments...
+                
+                        hashMapObject.put("customerId", customerId);
+                
+                        hashMapObject.putAll(data);
+                
+
+                
+
+
+                
+                    
+                    
+                    invokeStaticMethod("prototype.__update__lastUpdatedLocations", hashMapObject, new Adapter.JsonObjectCallback() {
+                    
+                        @Override
+                        public void onError(Throwable t) {
+                            callback.onError(t);
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject response) {
+                            
+                                if(response != null){
+                                    LastUpdatedLocationRepository lastUpdatedLocationRepo = getRestAdapter().createRepository(LastUpdatedLocationRepository.class);
+                                    Map<String, Object> result = JsonUtil.fromJson(response);
+                                    LastUpdatedLocation lastUpdatedLocation = lastUpdatedLocationRepo.createObject(result);
+                                    callback.onSuccess(lastUpdatedLocation);
+
+                                }else{
+                                    callback.onSuccess(null);
+                                }
+                            
+                        }
+                    });
+                
+
+                
+
+            }//Method update__lastUpdatedLocations definition ends here..
+
+            
+
+        
+    
+        
+            //Method destroy__lastUpdatedLocations definition
+            public void destroy__lastUpdatedLocations(  String customerId, final VoidCallback callback){
+
+                //Definging hashMap for data conversion
+                Map<String, Object> hashMapObject = new HashMap<>();
+                //Now add the arguments...
+                
+                        hashMapObject.put("customerId", customerId);
+                
+
+                
+                    invokeStaticMethod("prototype.__destroy__lastUpdatedLocations", hashMapObject, new Adapter.Callback() {
+                        @Override
+                        public void onError(Throwable t) {
+                            callback.onError(t);
+                        }
+
+                        @Override
+                        public void onSuccess(String response) {
+                            callback.onSuccess();
+                        }
+                    });
+                
+
+
+                
+
+                
+
+            }//Method destroy__lastUpdatedLocations definition ends here..
+
+            
+
+        
+    
+        
             //Method get__accessTokens definition
             public void get__accessTokens(  String customerId,  Map<String,  ? extends Object> filter, final ListCallback<AccessToken> callback){
 
@@ -1539,189 +1302,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
                 
 
             }//Method count__accessTokens definition ends here..
-
-            
-
-        
-    
-        
-            //Method get__location_shared definition
-            public void get__location_shared(  String customerId,  Map<String,  ? extends Object> filter, final ListCallback<Customer> callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("filter", filter);
-                
-
-                
-
-
-                
-
-                
-                    invokeStaticMethod("prototype.__get__location_shared", hashMapObject, new Adapter.JsonArrayCallback() {
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONArray response) {
-                            
-                                if(response != null){
-                                    //Now converting jsonObject to list
-                                    List<Map<String, Object>> result = (List) JsonUtil.fromJson(response);
-                                    List<Customer> customerList = new ArrayList<Customer>();
-                                    CustomerRepository customerRepo = getRestAdapter().createRepository(CustomerRepository.class);
-
-                                    for (Map<String, Object> obj : result) {
-                                        Customer customer = customerRepo.createObject(obj);
-                                        customerList.add(customer);
-                                    }
-                                    callback.onSuccess(customerList);
-                                }else{
-                                    callback.onSuccess(null);
-                                }
-                            
-                        }
-                    });
-                
-
-            }//Method get__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method create__location_shared definition
-            public void create__location_shared(  String customerId,  Map<String,  ? extends Object> data, final ObjectCallback<Customer> callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.putAll(data);
-                
-
-                
-
-
-                
-                    
-                    
-                    invokeStaticMethod("prototype.__create__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                if(response != null){
-                                    CustomerRepository customerRepo = getRestAdapter().createRepository(CustomerRepository.class);
-                                    Map<String, Object> result = JsonUtil.fromJson(response);
-                                    Customer customer = customerRepo.createObject(result);
-                                    callback.onSuccess(customer);
-
-                                }else{
-                                    callback.onSuccess(null);
-                                }
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method create__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method delete__location_shared definition
-            public void delete__location_shared(  String customerId, final VoidCallback callback){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-
-                
-                    invokeStaticMethod("prototype.__delete__location_shared", hashMapObject, new Adapter.Callback() {
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(String response) {
-                            callback.onSuccess();
-                        }
-                    });
-                
-
-
-                
-
-                
-
-            }//Method delete__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method count__location_shared definition
-            public void count__location_shared(  String customerId,  Map<String,  ? extends Object> where, final Adapter.JsonObjectCallback  callback ){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("customerId", customerId);
-                
-                        hashMapObject.put("where", where);
-                
-
-                
-
-
-                
-                    
-                    invokeStaticMethod("prototype.__count__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                callback.onSuccess(response);
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method count__location_shared definition ends here..
 
             
 
@@ -2540,92 +2120,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
         
     
         
-            //Method __connect__location_shared definition
-            public void __connect__location_shared(  String id,  List<String> fk, final Adapter.JsonObjectCallback  callback ){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("id", id);
-                
-                        hashMapObject.put("fk", fk);
-                
-
-                
-
-
-                
-                    
-                    invokeStaticMethod("__connect__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                callback.onSuccess(response);
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method __connect__location_shared definition ends here..
-
-            
-
-        
-    
-        
-            //Method __disconnect__location_shared definition
-            public void __disconnect__location_shared(  String id,  List<String> fk, final Adapter.JsonObjectCallback  callback ){
-
-                //Definging hashMap for data conversion
-                Map<String, Object> hashMapObject = new HashMap<>();
-                //Now add the arguments...
-                
-                        hashMapObject.put("id", id);
-                
-                        hashMapObject.put("fk", fk);
-                
-
-                
-
-
-                
-                    
-                    invokeStaticMethod("__disconnect__location_shared", hashMapObject, new Adapter.JsonObjectCallback() {
-                    
-                    
-                        @Override
-                        public void onError(Throwable t) {
-                            callback.onError(t);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject response) {
-                            
-                                callback.onSuccess(response);
-                            
-                        }
-                    });
-                
-
-                
-
-            }//Method __disconnect__location_shared definition ends here..
-
-            
-
-        
-    
-        
             //Method requestOtp definition
             public void requestOtp(  String number, final Adapter.JsonObjectCallback  callback ){
 
@@ -2844,17 +2338,6 @@ public class CustomerRepository extends com.strongloop.android.loopback.UserRepo
 
         
     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
     
         
