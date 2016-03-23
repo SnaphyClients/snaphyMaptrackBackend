@@ -40,6 +40,8 @@ module.exports = function(server, databaseObj, helper, packageObj) {
         //Google login with code..
         loginWithCode();
         searchCustomer();
+        //Shared location before saved..
+        sharedLocationBeforeSaved();
     };
 
 
@@ -58,6 +60,42 @@ module.exports = function(server, databaseObj, helper, packageObj) {
 
     var sharedLocationBeforeSaved = function(){
         var LastUpdatedLocation = databaseObj.LastUpdatedLocation;
+        var Customer = databaseObj.Customer;
+        //Create a last UpdatedLocation before creating a customer..
+        Customer.observe("after save", function(ctx, next){
+            //validate data..
+            var instance = ctx.instance;
+
+            //Now add lastUpdatedLocation data code..
+            if (ctx.isNewInstance) {
+                var customerId = instance.id;
+                //Now first create data..
+                LastUpdatedLocation.create({
+                    customerId: customerId
+                }, function(err, obj){
+                    if(err){
+                        console.error(err);
+                    }else{
+                        //Now get the id of the object..
+                        var lastUpdatedLocationId = obj.id;
+                        //Now update customer..
+                        instance.lastUpdatedLocationId = lastUpdatedLocationId;
+                        instance.save({}, function(err, value){
+                            if(err){
+                                console.error(err);
+                            }else{
+                                //Data saved succesfully..
+                            }
+                        });
+                    }
+                });
+            }
+
+            //Call the next middleware...
+            next();
+        });
+
+
         LastUpdatedLocation.observe("before save", function(ctx, next){
             //validate data..
             var instance = ctx.instance || ctx.data;
@@ -65,11 +103,22 @@ module.exports = function(server, databaseObj, helper, packageObj) {
             //First validate the data..
             if(instance.sharedLocation){
                 if(instance.sharedLocation.length){
+                    //Now format number..in the list..
+                    instance.sharedLocation.forEach(function(numberObj){
+                        if(numberObj.number){
+                            numberObj.number =  formatNumber(numberObj.number);
+                        }
+
+                    });
+
                     //instance.friends = validateFriendsList(instance.friends);
                     instance.sharedLocation = validateFriendsList(instance.sharedLocation);
+
                 }
 
             }
+
+            next();
         });
     };
 
