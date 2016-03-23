@@ -5,13 +5,121 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-    "lastUpdatedLocation": {
-      "type": "geopoint"
+  "validationsBackend": {
+    "rules": {
+      "customer": {
+        "required": true,
+        "valueNotEquals": ""
+      }
     },
-    "lastModified": {
+    "messages": {
+      "customer": {
+        "required": "Please add customer.",
+        "valueNotEquals": "Please add customer."
+      }
+    }
+  },
+  "complexValidation": {
+    "rules": {},
+    "messages": {}
+  },
+  "tables": {
+    "description": {
+      "display": false
+    },
+    "status": {
+      "search": "select",
+      "options": [
+        "allow",
+        "onhold",
+        "expired"
+      ],
+      "tag": {
+        "hold": "label-warning",
+        "allow": "label-primary",
+        "expired": "label-danger"
+      }
+    },
+    "eventType_name": {
+      "display": true,
+      "search": "related",
+      "relatedModel": "EventType",
+      "foreignKey": "eventTypeId",
+      "propertyName": "name"
+    },
+    "customer_phoneNumber": {
+      "display": true,
+      "search": "related",
+      "relatedModel": "Customer",
+      "foreignKey": "customerId",
+      "propertyName": "phoneNumber"
+    },
+    "customer_firstName": {
+      "display": true,
+      "search": "related",
+      "relatedModel": "Customer",
+      "foreignKey": "customerId",
+      "propertyName": "firstName"
+    },
+    "customer_lastName": {
+      "display": true,
+      "search": "related",
+      "relatedModel": "Customer",
+      "foreignKey": "customerId",
+      "propertyName": "lastName"
+    },
+    "customer_profilePic": {
+      "display": false
+    },
+    "customer_password": {
+      "display": false
+    },
+    "customer_date": {
+      "display": false
+    },
+    "customer_email": {
+      "display": false
+    },
+    "customer_status": {
+      "display": false
+    },
+    "customer_lastUpdatedLocation": {
+      "display": false
+    },
+    "customer_lastModified": {
+      "display": false
+    },
+    "sharedLocation":{
+      "display":false
+    }
+  },
+  "properties": {
+    "added": {
       "type": "date",
-      "required": true
+      "defaultFn": "now"
+    },
+    "sharedLocation": {
+      "type": [
+        "object"
+      ],
+      "required": false,
+      "template": {
+        "type": "arrayValue",
+        "templateOptions": {
+          "btnText": "Add friends",
+          "name": "Friend",
+          "fields": [
+            {
+              "type": "input",
+              "key": "number",
+              "templateOptions": {
+                "type": "text",
+                "label": "Enter friends contact number. Whom you want to share contact."
+              }
+            }
+          ]
+        }
+      }
     }
   },
   "validations": [],
@@ -19,7 +127,13 @@
     "customer": {
       "type": "belongsTo",
       "model": "Customer",
-      "foreignKey": ""
+      "foreignKey": "",
+      "templateOptions": {
+        "btnText": "Add Owner",
+        "searchProp": "email",
+        "create": false,
+        "id": "customerId"
+      }
     }
   },
   "acls": [],

@@ -33,7 +33,8 @@
   "databases": {
     "Track": "Track",
     "EventType": "EventType",
-    "Customer": "Customer"
+    "Customer": "Customer",
+    "LastUpdatedLocation": "LastUpdatedLocation"
   },
   "eventPushFromMessage": "Mapstrack",
   "pluginDepedencies": {},

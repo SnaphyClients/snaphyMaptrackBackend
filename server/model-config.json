@@ -76,7 +76,7 @@
     "dataSource": "mongodb",
     "public": true
   },
-   "application": {
+  "application": {
     "dataSource": "mongodb",
     "public": true
   },

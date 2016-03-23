@@ -56,12 +56,33 @@ module.exports = function(server, databaseObj, helper, packageObj) {
 
 
 
+    var sharedLocationBeforeSaved = function(){
+        var LastUpdatedLocation = databaseObj.LastUpdatedLocation;
+        LastUpdatedLocation.observe("before save", function(ctx, next){
+            //validate data..
+            var instance = ctx.instance || ctx.data;
+
+            //First validate the data..
+            if(instance.sharedLocation){
+                if(instance.sharedLocation.length){
+                    //instance.friends = validateFriendsList(instance.friends);
+                    instance.sharedLocation = validateFriendsList(instance.sharedLocation);
+                }
+
+            }
+        });
+    };
+
+
+
+
 
     var beforeTrackDataSaved = function() {
         var Customer = databaseObj.Customer;
         var Track = databaseObj.Track;
         //unique code to track the data..
         Track.validatesUniquenessOf('uniqueCode');
+        Track.validatesUniquenessOf('locationId');
 
         Track.observe("before save", function(ctx, next) {
             //validate data..
@@ -72,14 +93,11 @@ module.exports = function(server, databaseObj, helper, packageObj) {
             }
 
             if (instance.type === "location") {
-
                 validateLocationType(instance, function() {
                     //Format data before saving..
                     formatData(instance);
-
                     //call the next middleware now
                     next();
-
                     //Meanwhile share info between friends...
                     if (instance.friends) {
                         if (instance.friends.length) {
@@ -646,24 +664,23 @@ module.exports = function(server, databaseObj, helper, packageObj) {
     var validateFriendsList = function(contactList) {
         if (contactList) {
             if (contactList.length) {
-                var validNumberList = _.filter(contactList, function(contactObj) {
+                var validNumberList =  _.filter(contactList, function(contactObj) {
                     return validatePhoneNumber(contactObj.number);
                 });
-                return validNumberList;
+
+                //Now only return the unique number and remove the redundant..
+                return _.uniqBy(validNumberList, 'number');
             }
         }
+
+        return [];
     };
 
 
     //True if the data is correct..
     var validatePhoneNumber = function(number) {
         var patt = /^\+?[0-9]{10,12}$/;
-        if (patt.test(number)) {
-            return true;
-        } else {
-            //Number not valid..
-            return false;
-        }
+        return patt.test(number);
     };
 
 
